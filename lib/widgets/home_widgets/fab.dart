@@ -15,11 +15,12 @@ class _FABState extends State<FAB> {
   final _formkey = GlobalKey<FormState>();
   late PlatformFile file;
   late String filePath;
+  late String catName;
+  late int catId;
 
   final nameController = TextEditingController();
   final priceController = TextEditingController();
   final descController = TextEditingController();
-  final catIdController = TextEditingController();
   final inStockController = TextEditingController();
 
   @override
@@ -28,7 +29,6 @@ class _FABState extends State<FAB> {
     nameController.dispose();
     priceController.dispose();
     descController.dispose();
-    catIdController.dispose();
     inStockController.dispose();
     super.dispose();
   }
@@ -36,11 +36,11 @@ class _FABState extends State<FAB> {
   addProduct() async {
     if (_formkey.currentState!.validate()) {
       var formData = FormData.fromMap({
-        'name': nameController.text,
+        'productName': nameController.text,
         'price': priceController.text,
         'desc': descController.text,
         'inStock': inStockController.text,
-        'catId': catIdController.text,
+        'catId': catId,
         'imgUrl': await MultipartFile.fromFile(filePath, filename: file.name),
       });
       AddProduct(formData: formData, context: context);
@@ -63,6 +63,7 @@ class _FABState extends State<FAB> {
                 key: _formkey,
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
                   TextFormField(
+                    autofocus: true,
                     controller: nameController,
                     decoration: const InputDecoration(
                         hintText: 'Enter product name',
@@ -74,6 +75,8 @@ class _FABState extends State<FAB> {
                       return null;
                     },
                   ),
+                 
+                 
                   TextFormField(
                     controller: descController,
                     decoration: const InputDecoration(
@@ -112,19 +115,22 @@ class _FABState extends State<FAB> {
                       return null;
                     },
                   ),
-                  TextFormField(
-                    controller: catIdController,
-                    // keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                        hintText: 'Enter category id',
-                        labelText: 'Category ID'),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Category ID cannot be empty.";
-                      }
-                      return null;
+                  DropdownButtonFormField(
+                    hint: const Text('Category name'),
+                    items: ['1', '2', '3']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        catName = value as String;
+                      });
                     },
                   ),
+                  
                   20.heightBox,
                   ElevatedButton(
                     onPressed: () async {

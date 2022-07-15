@@ -26,9 +26,12 @@ class AddToWishlist extends StatelessWidget {
           print('added');
           AddWishlist(item.id);
         }
+        else {
+          RemoveWishlist(item.id);
+        }
       },
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Vx.red500),
+        backgroundColor: MaterialStateProperty.all(Vx.rose500),
         shape: MaterialStateProperty.all(const StadiumBorder()),
       ),
       child: Container(

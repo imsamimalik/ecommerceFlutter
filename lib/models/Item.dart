@@ -19,64 +19,70 @@ class ProductsModel {
 
 class Item {
   final num id;
-  final String name;
+  final String productName;
   final String desc;
   final num price;
   final num inStock;
   final String imgUrl;
   final num catId;
+  final String catName;
 
   Item({
     required this.id,
-    required this.name,
+      required this.productName,
     required this.desc,
     required this.price,
     required this.inStock,
     required this.imgUrl,
     required this.catId,
+      required this.catName
   });
 
   Item copyWith({
     num? id,
-    String? name,
+      String? productName,
     String? desc,
     num? price,
     num? inStock,
     String? imgUrl,
     num? catId,
+      String? catName
   }) {
     return Item(
       id: id ?? this.id,
-      name: name ?? this.name,
+        productName: productName ?? this.productName,
       desc: desc ?? this.desc,
       price: price ?? this.price,
       inStock: inStock ?? this.inStock,
       imgUrl: imgUrl ?? this.imgUrl,
       catId: catId ?? this.catId,
+        catName: catName ?? this.catName
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'name': name,
+      'productName': productName,
       'desc': desc,
       'price': price,
       'inStock': inStock,
       'imgUrl': imgUrl,
       'catId': catId,
+      'catName': catName
     };
   }
 
   factory Item.fromMap(Map<String, dynamic> map) {
     return Item(
       id: num.parse(map['id'].toString()),
-      name: map['name'] as String,
+      productName: map['productName'] as String,
       desc: map['desc'] as String,
       price: num.parse(map['price'].toString()),
       inStock: num.parse(map['inStock'].toString()),
       imgUrl: (map['imgUrl'] as String),
       catId: num.parse(map['catId'].toString()),
+      catName: map['catName'] as String,
     );
   }
 
@@ -87,7 +93,7 @@ class Item {
 
   @override
   String toString() {
-    return 'Item(id: $id, name: $name, desc: $desc, price: $price, inStock: $inStock, imgUrl: $imgUrl, catId: $catId)';
+    return 'Item(id: $id, productName: $productName, desc: $desc, price: $price, inStock: $inStock, imgUrl: $imgUrl, catId: $catId, catName:$catName)';
   }
 
   @override
@@ -96,7 +102,7 @@ class Item {
 
     return other is Item &&
         other.id == id &&
-        other.name == name &&
+        other.productName == productName &&
         other.desc == desc &&
         other.price == price &&
         other.inStock == inStock &&
@@ -107,12 +113,13 @@ class Item {
   @override
   int get hashCode {
     return id.hashCode ^
-        name.hashCode ^
+        productName.hashCode ^
         desc.hashCode ^
         price.hashCode ^
         inStock.hashCode ^
         imgUrl.hashCode ^
-        catId.hashCode;
+        catId.hashCode ^
+        catName.hashCode;
   }
 }
 

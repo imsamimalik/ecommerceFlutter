@@ -23,6 +23,8 @@ class AddToCart extends StatelessWidget {
       onPressed: () {
         if (!isInCart) {
           AddCart(item);
+        } else {
+          RemoveCart(item);
         }
       },
       style: ButtonStyle(

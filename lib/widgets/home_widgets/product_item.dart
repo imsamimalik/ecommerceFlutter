@@ -33,7 +33,7 @@ class ProductItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            product.name.text.bold.lg
+            product.productName.text.bold.lg
                 .color(context.theme.textTheme.headline1!.color)
                 .make(),
             product.desc.text.textStyle(context.captionStyle).make(),
@@ -45,7 +45,7 @@ class ProductItem extends StatelessWidget {
                 "\$${product.price}".text.bold.make(),
                 AddToCart(item: product)
               ],
-            ).pOnly(right: 8)
+            ).pOnly(right: 20)
           ],
         ))
       ],

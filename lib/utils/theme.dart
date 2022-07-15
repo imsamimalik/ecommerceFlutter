@@ -4,7 +4,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 class MyTheme {
   static ThemeData get lightTheme => ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.teal,
         fontFamily: GoogleFonts.poppins().fontFamily,
         cardColor: Colors.white,
         canvasColor: creamColor,
@@ -32,9 +32,9 @@ class MyTheme {
             titleTextStyle: TextStyle(color: Colors.white, fontSize: 20)),
       );
 
-  static Color creamColor = const Color(0xfff5f5f5);
+  static Color creamColor = const Color(0xFFEAEAEA);
   static Color darkCreamColor = Vx.gray900;
   static Color darkBluishColor = const Color(0xff403b58);
   static Color lightBluishColor = Vx.indigo500;
-  static Color accentColor = Colors.deepPurple;
+  static Color accentColor = Colors.teal;
 }

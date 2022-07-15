@@ -63,7 +63,7 @@ class _WishlistListState extends State<WishlistList> {
                           RemoveWishlist(item.id);
                         },
                         icon: const Icon(Icons.remove_circle_outline)),
-                    title: item.name.text.make(),
+                    title: item.productName.text.make(),
                   ).p24(),
                 ),
               );

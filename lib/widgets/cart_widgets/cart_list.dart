@@ -37,7 +37,7 @@ class CartList extends StatelessWidget {
                           RemoveCart(item);
                         },
                         icon: const Icon(Icons.remove_circle_outline)),
-                    title: item.name.text.make(),
+                    title: item.productName.text.make(),
                   ).p24(),
                 ),
               );

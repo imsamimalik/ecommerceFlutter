@@ -37,8 +37,7 @@ class _MainAppState extends State<MainApp> {
         themeMode: ThemeMode.light,
         theme: MyTheme.lightTheme,
         darkTheme: MyTheme.darkTheme,
-        initialRoute: MyRoutes.wishlist,
-        //token != '' ? MyRoutes.home : MyRoutes.login,
+        initialRoute: token != '' ? MyRoutes.home : MyRoutes.login,
         routes: {
           MyRoutes.home: (context) => const HomePage(),
           MyRoutes.login: (context) => const LoginPage(),

@@ -43,10 +43,11 @@ class ProductDetail extends StatelessWidget {
                 color: context.cardColor,
                 child: Column(
                   children: [
-                    product.name.text.bold.xl4
+                    product.productName.text.bold.xl4
                         .color(MyTheme.darkBluishColor)
                         .make(),
                     product.desc.text.xl.textStyle(context.captionStyle).make(),
+                    '(${product.catName})'.text.make(),
                     10.heightBox,
                     "Sit lorem invidunt aliquyam sanctus magna, aliquyam sit at nonumy ipsum, diam sadipscing aliquyam lorem amet. Vero justo dolor justo kasd amet, lorem lorem amet erat justo elitr vero rebum dolores voluptua. Sit aliquyam kasd gubergren voluptua accusam, eirmod dolores sit at amet eos, sit duo nonumy clita no, lorem."
                         .text
