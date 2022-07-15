@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../models/wishlist.dart';
+import '../../models/wishlist_item.dart';
 import '../../store/store.dart';
 
 class AddToWishlist extends StatelessWidget {
@@ -16,7 +17,7 @@ class AddToWishlist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final wishlist = (VxState.store as MyStore).wishlist;
-    bool isInWishlist = wishlist.ids.contains(item.id);
+    bool isInWishlist = wishlist.ids.contains(WishlistItem(item.id));
     VxState.watch(context, on: [AddWishlist, RemoveWishlist]);
 
     return ElevatedButton(
