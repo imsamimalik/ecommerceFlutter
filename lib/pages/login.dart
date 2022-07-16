@@ -83,25 +83,33 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: TextFormField(
-                        controller: emailConroller,
-                        decoration: const InputDecoration(
-                            hintText: 'Enter email', labelText: 'Email'),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Email cannot be empty.";
-                          }
-                          return null;
-                        },
+                    const Text(
+                      "Login to your account",
+                      style: TextStyle(
+                        fontSize: 16,
                       ),
                     ),
-                    TextFormField(
+                    40.heightBox,
+                    VxTextField(
+                      controller: emailConroller,
+                      fillColor: Colors.transparent,
+                      hint: 'Enter your email',
+                      labelText: 'Email',
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Email cannot be empty.";
+                        }
+                        return null;
+                      },
+                    ),
+                    20.heightBox,
+                    VxTextField(
                       controller: passwordController,
                       obscureText: true,
-                      decoration: const InputDecoration(
-                          hintText: 'Enter password', labelText: 'Password'),
+                      isPassword: true,
+                      fillColor: Colors.transparent,
+                      hint: 'Enter your password',
+                      labelText: 'Password',
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Passowrd cannot be empty.";
@@ -131,12 +139,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-                            20.heightBox,
+              20.heightBox,
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, MyRoutes.register);
                 },
-                child: 'nned an account? Register'.text.makeCentered(),
+                child: "need an account? Register".text.makeCentered(),
               ),
             ]),
           ),

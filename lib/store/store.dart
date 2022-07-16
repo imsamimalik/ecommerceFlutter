@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../models/User.dart';
+import '../models/order_item.dart';
+import '../models/orders.dart';
 import '../models/wishlist_item.dart';
 import '../utils/constants.dart';
 
@@ -16,6 +18,7 @@ class MyStore extends VxStore {
   late String token;
   late User user;
   late WishlistModel wishlist;
+  late Orders orders;
 
   MyStore() {
     products = ProductsModel();
@@ -23,7 +26,6 @@ class MyStore extends VxStore {
     cart.products = products;
     wishlist = WishlistModel([]);
     initUser();
-    
   }
   initUser() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
@@ -46,6 +48,7 @@ class MyStore extends VxStore {
     print(user);
 
     initWishlist();
+  //  initOrders();
   }
 
   initWishlist() async {
@@ -53,9 +56,20 @@ class MyStore extends VxStore {
 
     wishlist = WishlistModel(List.from(response.data)
         .map<WishlistItem>((item) => WishlistItem.fromMap(item))
-        .toList());
+          .toList(),
+    );
   }
 
+  initOrders() async {
+    final response = await CONSTANTS.DIO.get('/orders');
+    print(response.data.runtimeType);
+    orders = Orders(
+      List.from(response.data)
+          .map<OrderItem>((item) => OrderItem.fromMap(item))
+          .toList(),
+    );
+    
 
-
+    // print(orders);
+  }
 }

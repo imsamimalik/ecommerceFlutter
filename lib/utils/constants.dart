@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ecommerceflutter/utils/helper.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../store/store.dart';
@@ -14,5 +15,15 @@ class CONSTANTS {
     'Authorization': 'Bearer $token'
   };
 
-  static final DIO = Dio(BaseOptions(baseUrl: API_BASE_URL, headers: HEADERS));
+  static final DIO = Dio(BaseOptions(baseUrl: API_BASE_URL, headers: HEADERS))
+    ..interceptors.add(Logging());
+}
+
+class Logging extends Interceptor {
+  @override
+  void onError(DioError err, ErrorInterceptorHandler handler) {
+    if (Helper.isTokenValid(err.response!.statusCode)) {
+      return super.onError(err, handler);
+    }
+  }
 }

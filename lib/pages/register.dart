@@ -86,10 +86,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Column(
                   children: [
-                    TextFormField(
-                      controller: emailConroller,
-                      decoration: const InputDecoration(
-                          hintText: 'Enter email', labelText: 'Email'),
+                    VxTextField(
+                      fillColor: Colors.transparent,
+                      hint: 'Enter your email',
+                      labelText: 'Email',
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Email cannot be empty.";
@@ -97,10 +97,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         return null;
                       },
                     ),
-                    TextFormField(
+                    VxTextField(
                       controller: nameController,
-                      decoration: const InputDecoration(
-                          hintText: 'Enter full name', labelText: 'Full name'),
+                      fillColor: Colors.transparent,
+                      hint: 'Enter your fullname',
+                      labelText: 'Fullname',
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Full name cannot be empty.";
@@ -108,10 +109,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         return null;
                       },
                     ),
-                    TextFormField(
+                    VxTextField(
                       controller: usernameController,
-                      decoration: const InputDecoration(
-                          hintText: 'Enter Username', labelText: 'Username'),
+                      fillColor: Colors.transparent,
+                      hint: 'Enter your username',
+                      labelText: 'Username',
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Username cannot be empty.";
@@ -119,11 +121,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         return null;
                       },
                     ),
-                    TextFormField(
+                    VxTextField(
                       controller: passwordController,
                       obscureText: true,
-                      decoration: const InputDecoration(
-                          hintText: 'Enter password', labelText: 'Password'),
+                      isPassword: true,
+                      fillColor: Colors.transparent,
+                      hint: 'Enter your password',
+                      labelText: 'Password',
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Passowrd cannot be empty.";
@@ -133,12 +137,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         return null;
                       },
                     ),
-                    TextFormField(
+                    VxTextField(
                       controller: passwordController,
                       obscureText: true,
-                      decoration: const InputDecoration(
-                          hintText: 'Enter password again',
-                          labelText: 'Confirm Password'),
+                      isPassword: true,
+                      fillColor: Colors.transparent,
+                      hint: 'Confirm your password',
+                      labelText: 'Confirm Password',
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Confirm Passowrd cannot be empty.";
@@ -148,10 +153,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         return null;
                       },
                     ),
-                    TextFormField(
+                    VxTextField(
                       controller: addressController,
-                      decoration: const InputDecoration(
-                          hintText: 'Enter address', labelText: 'Address'),
+                      fillColor: Colors.transparent,
+                      hint: 'Enter your address',
+                      labelText: 'Address',
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Address cannot be empty.";

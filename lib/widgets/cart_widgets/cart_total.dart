@@ -29,11 +29,11 @@ class CartTotal extends StatelessWidget {
           30.widthBox,
           ElevatedButton(
             onPressed: () {},
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                    context.theme.floatingActionButtonTheme.backgroundColor),
-                shape: MaterialStateProperty.all(const StadiumBorder())),
-            child: 'Buy'.text.make(),
+            style: ElevatedButton.styleFrom(
+              primary: context.theme.floatingActionButtonTheme.backgroundColor,
+              shape: const StadiumBorder(),
+            ),
+            child: 'Buy'.text.bold.color(context.theme.canvasColor).make(),
           ).wh(100, 50)
         ],
       ),

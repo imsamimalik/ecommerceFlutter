@@ -27,6 +27,9 @@ class _BottomNavState extends State<BottomNav> {
           Navigator.pushNamed(context, MyRoutes.cart);
           break;
         case 2:
+          Navigator.pushNamed(context, MyRoutes.wishlist);
+          break;
+        case 3:
           Navigator.pushNamed(context, MyRoutes.profile);
           break;
       }
@@ -35,24 +38,28 @@ class _BottomNavState extends State<BottomNav> {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
+    return NavigationBar(
+      destinations: const [
+        NavigationDestination(
           icon: Icon(Icons.home),
           label: 'Home',
         ),
-        BottomNavigationBarItem(
+        NavigationDestination(
           icon: Icon(Icons.shopping_cart_rounded),
           label: 'Cart',
         ),
-        BottomNavigationBarItem(
+        NavigationDestination(
+          icon: Icon(Icons.favorite_rounded),
+          label: 'Wishlist',
+        ),
+        NavigationDestination(
           icon: Icon(Icons.person_rounded),
           label: 'Profile',
         ),
       ],
-      currentIndex: widget.currentIndex,
-      selectedItemColor: Colors.amber[800],
-      onTap: _onItemTapped,
+      selectedIndex: widget.currentIndex,
+      animationDuration: const Duration(milliseconds: 200),
+      onDestinationSelected: _onItemTapped,
     );
   }
 }

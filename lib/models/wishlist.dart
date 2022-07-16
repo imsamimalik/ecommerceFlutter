@@ -67,10 +67,9 @@ class WishlistModel {
   int get hashCode => ids.hashCode;
 }
 
-
 class AddWishlist extends VxMutation<MyStore> {
   final num id;
-  
+
   AddWishlist(this.id);
   @override
   perform() async {
@@ -83,9 +82,6 @@ class AddWishlist extends VxMutation<MyStore> {
         print('added to db');
       }
     }
-
-
-
   }
 }
 
@@ -106,4 +102,3 @@ class RemoveWishlist extends VxMutation<MyStore> {
     }
   }
 }
-

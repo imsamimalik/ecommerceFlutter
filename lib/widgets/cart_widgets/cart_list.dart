@@ -1,5 +1,6 @@
 import 'package:ecommerceflutter/models/cart.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../pages/product_detail.dart';
@@ -36,9 +37,10 @@ class CartList extends StatelessWidget {
                         onPressed: () {
                           RemoveCart(item);
                         },
-                        icon: const Icon(Icons.remove_circle_outline)),
+                      icon: const Icon(FontAwesomeIcons.trashCan, size: 20),
+                    ),
                     title: item.productName.text.make(),
-                  ).p24(),
+                  ).p24().backgroundColor(Vx.teal50),
                 ),
               );
             });

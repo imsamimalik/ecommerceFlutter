@@ -1,6 +1,7 @@
 import 'package:ecommerceflutter/models/Item.dart';
 import 'package:ecommerceflutter/models/wishlist.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../models/wishlist_item.dart';
@@ -26,13 +27,11 @@ class _WishlistListState extends State<WishlistList> {
 
   loadWishlistList() async {
     final response = await CONSTANTS.DIO.post('/wishlist');
-
     wishlist = WishlistModel(List.from(response.data)
         .map<WishlistItem>((item) => WishlistItem.fromMap(item))
         .toList());
     setState(() {});
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,8 @@ class _WishlistListState extends State<WishlistList> {
             itemCount: wishlist.ids.length,
             itemBuilder: (context, index) {
               final id = wishlist.ids[index].productId;
-              Item item= ProductsModel.products.firstWhere((it)=>it.id == id);
+              Item item =
+                  ProductsModel.products.firstWhere((it) => it.id == id);
               return Card(
                 child: InkWell(
                   onTap: () {
@@ -55,16 +55,16 @@ class _WishlistListState extends State<WishlistList> {
                                 ProductDetail(product: item)));
                   },
                   child: ListTile(
-                    leading: Image.network(
-                        '${CONSTANTS.imgURL}${item.imgUrl}',
+                    leading: Image.network('${CONSTANTS.imgURL}${item.imgUrl}',
                         fit: BoxFit.contain),
                     trailing: IconButton(
                         onPressed: () {
                           RemoveWishlist(item.id);
                         },
-                        icon: const Icon(Icons.remove_circle_outline)),
+                      icon: const Icon(FontAwesomeIcons.trashCan, size: 20),
+                    ),
                     title: item.productName.text.make(),
-                  ).p24(),
+                  ).p24().backgroundColor(Vx.teal50),
                 ),
               );
             });

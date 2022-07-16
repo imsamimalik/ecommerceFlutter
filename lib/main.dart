@@ -8,9 +8,12 @@ import 'package:ecommerceflutter/store/store.dart';
 import 'package:ecommerceflutter/utils/routes.dart';
 import 'package:ecommerceflutter/utils/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'pages/wishlist.dart';
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,12 +35,14 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     VxState.watch(context, on: [LoginUser, LogoutUser]);
 
-    return MaterialApp(
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
         theme: MyTheme.lightTheme,
         darkTheme: MyTheme.darkTheme,
         initialRoute: token != '' ? MyRoutes.home : MyRoutes.login,
+        navigatorKey: navigatorKey,
+        scaffoldMessengerKey: scaffoldKey,
         routes: {
           MyRoutes.home: (context) => const HomePage(),
           MyRoutes.login: (context) => const LoginPage(),

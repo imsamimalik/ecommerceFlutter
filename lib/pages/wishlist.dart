@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../widgets/bottom_nav.dart';
 import '../widgets/wishlist_widgets/wish_list.dart';
 
 
@@ -21,9 +22,9 @@ class WishlistPage extends StatelessWidget {
           
         ],
       ),
-      // bottomNavigationBar: const BottomNav(
-      //   currentIndex: 3,
-      // ),
+      bottomNavigationBar: const BottomNav(
+        currentIndex: 2,
+      ),
     );
   }
 }

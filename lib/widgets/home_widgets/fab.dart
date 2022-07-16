@@ -16,7 +16,6 @@ class _FABState extends State<FAB> {
   late PlatformFile file;
   late String filePath;
   late String catName;
-  late int catId;
 
   final nameController = TextEditingController();
   final priceController = TextEditingController();
@@ -40,7 +39,7 @@ class _FABState extends State<FAB> {
         'price': priceController.text,
         'desc': descController.text,
         'inStock': inStockController.text,
-        'catId': catId,
+        'category': catName,
         'imgUrl': await MultipartFile.fromFile(filePath, filename: file.name),
       });
       AddProduct(formData: formData, context: context);
@@ -49,8 +48,13 @@ class _FABState extends State<FAB> {
 
   @override
   Widget build(BuildContext context) {
-    // final cart = (VxState.store as MyStore).cart;
-
+    final categories = [
+      'Electronics',
+      'Sports',
+      'Clothes',
+      'Furniture',
+    ];
+    // print(cats.toList());
     // return VxBuilder(
     //   builder: (context, store, status) {
     return FloatingActionButton(
@@ -75,8 +79,6 @@ class _FABState extends State<FAB> {
                       return null;
                     },
                   ),
-                 
-                 
                   TextFormField(
                     controller: descController,
                     decoration: const InputDecoration(
@@ -115,10 +117,9 @@ class _FABState extends State<FAB> {
                       return null;
                     },
                   ),
-                  DropdownButtonFormField(
+                  DropdownButtonFormField<String>(
                     hint: const Text('Category name'),
-                    items: ['1', '2', '3']
-                        .map<DropdownMenuItem<String>>((String value) {
+                    items: categories.map<DropdownMenuItem<String>>((value) {
                       return DropdownMenuItem(
                         value: value,
                         child: Text(value),
@@ -130,7 +131,6 @@ class _FABState extends State<FAB> {
                       });
                     },
                   ),
-                  
                   20.heightBox,
                   ElevatedButton(
                     onPressed: () async {

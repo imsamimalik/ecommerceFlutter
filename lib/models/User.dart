@@ -111,9 +111,7 @@ class LoginUser extends VxMutation<MyStore> {
 }
 
 class LogoutUser extends VxMutation<MyStore> {
-// final token;
 
-  // LogoutUser(this.token);
   @override
   perform() async {
     store?.token = '';
@@ -129,8 +127,6 @@ class LogoutUser extends VxMutation<MyStore> {
       address: '',
       walletBalance: -1,
     );
-
-// await Navigator.pushReplacementNamed(MyRoutes.login);
   }
 }
 

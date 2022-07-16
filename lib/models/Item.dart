@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:ecommerceflutter/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../utils/constants.dart';
+import 'package:ecommerceflutter/store/store.dart';
 
+import '../utils/constants.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class ProductsModel {
@@ -24,39 +24,34 @@ class Item {
   final num price;
   final num inStock;
   final String imgUrl;
-  final num catId;
-  final String catName;
-
+  final String category;
   Item({
     required this.id,
-      required this.productName,
+    required this.productName,
     required this.desc,
     required this.price,
     required this.inStock,
     required this.imgUrl,
-    required this.catId,
-      required this.catName
+    required this.category,
   });
 
   Item copyWith({
     num? id,
-      String? productName,
+    String? productName,
     String? desc,
     num? price,
     num? inStock,
     String? imgUrl,
-    num? catId,
-      String? catName
+    String? category,
   }) {
     return Item(
       id: id ?? this.id,
-        productName: productName ?? this.productName,
+      productName: productName ?? this.productName,
       desc: desc ?? this.desc,
       price: price ?? this.price,
       inStock: inStock ?? this.inStock,
       imgUrl: imgUrl ?? this.imgUrl,
-      catId: catId ?? this.catId,
-        catName: catName ?? this.catName
+      category: category ?? this.category,
     );
   }
 
@@ -68,8 +63,7 @@ class Item {
       'price': price,
       'inStock': inStock,
       'imgUrl': imgUrl,
-      'catId': catId,
-      'catName': catName
+      'category': category,
     };
   }
 
@@ -80,9 +74,8 @@ class Item {
       desc: map['desc'] as String,
       price: num.parse(map['price'].toString()),
       inStock: num.parse(map['inStock'].toString()),
-      imgUrl: (map['imgUrl'] as String),
-      catId: num.parse(map['catId'].toString()),
-      catName: map['catName'] as String,
+      imgUrl: map['imgUrl'] as String,
+      category: map['category'] as String,
     );
   }
 
@@ -93,21 +86,20 @@ class Item {
 
   @override
   String toString() {
-    return 'Item(id: $id, productName: $productName, desc: $desc, price: $price, inStock: $inStock, imgUrl: $imgUrl, catId: $catId, catName:$catName)';
+    return 'Item(id: $id, productName: $productName, desc: $desc, price: $price, inStock: $inStock, imgUrl: $imgUrl, category: $category)';
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(covariant Item other) {
     if (identical(this, other)) return true;
 
-    return other is Item &&
-        other.id == id &&
+    return other.id == id &&
         other.productName == productName &&
         other.desc == desc &&
         other.price == price &&
         other.inStock == inStock &&
         other.imgUrl == imgUrl &&
-        other.catId == catId;
+        other.category == category;
   }
 
   @override
@@ -118,8 +110,7 @@ class Item {
         price.hashCode ^
         inStock.hashCode ^
         imgUrl.hashCode ^
-        catId.hashCode ^
-        catName.hashCode;
+        category.hashCode;
   }
 }
 

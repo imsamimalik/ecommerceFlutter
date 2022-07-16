@@ -8,6 +8,14 @@ class MyTheme {
         fontFamily: GoogleFonts.poppins().fontFamily,
         cardColor: Colors.white,
         canvasColor: creamColor,
+        useMaterial3: true,
+        navigationBarTheme: const NavigationBarThemeData(
+          height: 70,
+          backgroundColor: Color(0xFFEAEAEA),
+          surfaceTintColor: Color(0xFFEAEAEA),
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+        ),
+            
         textTheme:  TextTheme(headline1: TextStyle(color: darkBluishColor)),
         floatingActionButtonTheme:
             const FloatingActionButtonThemeData(backgroundColor: Vx.teal500),
@@ -23,6 +31,13 @@ class MyTheme {
         brightness: Brightness.dark,
         cardColor: Colors.black,
         canvasColor: darkCreamColor,
+        useMaterial3: true,
+        navigationBarTheme: const NavigationBarThemeData(
+          height: 70,
+          backgroundColor: Color(0xFF111827),
+          surfaceTintColor: Color(0xFF111827),
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+        ),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: Vx.teal500),
         textTheme:  const TextTheme(headline1: TextStyle(color: Colors.white)),
         appBarTheme: const AppBarTheme(

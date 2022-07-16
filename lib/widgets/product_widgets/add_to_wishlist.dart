@@ -1,6 +1,6 @@
 import 'package:ecommerceflutter/models/Item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../models/wishlist.dart';
@@ -36,8 +36,14 @@ class AddToWishlist extends StatelessWidget {
       ),
       child: Container(
         child: isInWishlist
-            ? const Icon(CupertinoIcons.minus_circle)
-            : const Icon(CupertinoIcons.add_circled),
+              ? const Icon(
+                  FontAwesomeIcons.heartCircleMinus,
+                  color: Colors.white,
+                )
+              : const Icon(
+                  FontAwesomeIcons.heart,
+                  color: Colors.white,
+                )
       ),
     );
   }
