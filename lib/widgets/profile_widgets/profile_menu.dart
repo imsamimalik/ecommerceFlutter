@@ -5,7 +5,9 @@ import 'package:velocity_x/velocity_x.dart';
 class ProfileMenu extends StatefulWidget {
   final text;
   final IconData icon;
-  const ProfileMenu({super.key, required this.text, required this.icon});
+  final route;
+  const ProfileMenu(
+      {super.key, required this.text, required this.icon, required this.route});
 
   @override
   State<ProfileMenu> createState() => _ProfileMenuState();
@@ -16,7 +18,9 @@ class _ProfileMenuState extends State<ProfileMenu> {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(backgroundColor: Vx.teal50),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).pushNamed(widget.route);
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

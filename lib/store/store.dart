@@ -24,17 +24,22 @@ class MyStore extends VxStore {
     cart = CartModel();
     cart.products = products;
     wishlist = WishlistModel([]);
+    orders = <Orders>[];
     initUser();
   }
   
   clearCart() {
     cart.clearCart();
   }
+  clearOrder() {
+    orders.clear();
+  }
 
   initUser() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     var value = localStorage.getString('token');
     token = value ?? "";
+
 
     String userSaved = localStorage.getString('user') ?? "";
     if (userSaved.isEmpty) {
@@ -51,8 +56,7 @@ class MyStore extends VxStore {
     }
     // print(user);
     if (token != '') {
-
-    initWishlist();
+      initWishlist();
       initOrders();
     }
   }

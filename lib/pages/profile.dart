@@ -43,26 +43,31 @@ class ProfilePage extends StatelessWidget {
               (VxState.store as MyStore).user.walletBalance.text.make(),
               20.heightBox,
               Column(
-                children: const [
+                children: [
                   ProfileMenu(
                     text: "Account",
                     icon: FontAwesomeIcons.circleUser,
+                      route: MyRoutes.home
                   ),
                   ProfileMenu(
                     text: "Orders",
                     icon: FontAwesomeIcons.listCheck,
+                      route: MyRoutes.orders
                   ),
                   ProfileMenu(
                     text: "Reviews",
                     icon: FontAwesomeIcons.starHalfStroke,
+                      route: MyRoutes.home
                   ),
                   ProfileMenu(
                     text: "Help Cemter",
                     icon: FontAwesomeIcons.comments,
+                      route: MyRoutes.home
                   ),
                   ProfileMenu(
                     text: "Admin Panel",
                     icon: FontAwesomeIcons.userLock,
+                      route: MyRoutes.home
                   ),
                 ],
               ),

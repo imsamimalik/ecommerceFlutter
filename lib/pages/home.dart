@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -42,7 +44,7 @@ class _HomePageState extends State<HomePage> {
 
   test() {
     if (kDebugMode) {
-      print('home => ${user.username} => $token');
+      log('home => ${user.username} => $token');
     }
   }
 

@@ -1,3 +1,4 @@
+import 'package:ecommerceflutter/pages/orders.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -52,6 +53,7 @@ class _MainAppState extends State<MainApp> {
           MyRoutes.register: (context) => const RegisterPage(),
           MyRoutes.wishlist: (context) => const WishlistPage(),
           MyRoutes.success: (context) => const SuccessPage(),
+          MyRoutes.orders: (context) => const OrdersPage(),
         });
   }
 }

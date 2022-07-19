@@ -7,4 +7,5 @@ class MyRoutes {
   static String register = "/register";
   static String wishlist = "/wishlist";
   static String success = "/success";
+  static String orders = "/orders";
 }

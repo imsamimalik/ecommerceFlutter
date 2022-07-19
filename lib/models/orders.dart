@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:velocity_x/velocity_x.dart';
 
 import '../main.dart' show navigatorKey;
@@ -7,17 +9,24 @@ import '../utils/routes.dart';
 class Orders {
   late num id;
   late num uid;
+  late bool deliveryStatus;
+  late num totalAmount;
   late List<num> pid;
 
   Orders({
     required this.id,
     required this.uid,
+    required this.deliveryStatus,
+    required this.totalAmount,
+
     required this.pid,
   });
 
   Orders.fromAPI(Map<String, dynamic> json) {
     id = num.parse(json["id"].toString());
     uid = num.parse(json["uid"].toString());
+    totalAmount = num.parse(json["totalAmount"].toString());
+    deliveryStatus = jsonDecode(json["deliveryStatus"]) == 1 ? true : false;
     pid = <num>[];
     (json["pid"]).forEach((v) {
       pid.add(v);

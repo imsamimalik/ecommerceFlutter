@@ -1,5 +1,46 @@
 import 'package:flutter/material.dart';
 
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  static const String _title = 'Flutter Code Sample';
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
+      home: Scaffold(
+        appBar: AppBar(title: const Text(_title)),
+        body: const MyStatefulWidget(),
+      ),
+    );
+  }
+}
+
+// stores ExpansionPanel state information
+class Item {
+  Item({
+    required this.id,
+    required this.expandedValue,
+    required this.headerValue,
+  });
+
+  int id;
+  String expandedValue;
+  String headerValue;
+}
+
+List<Item> generateItems(int numberOfItems) {
+  return List<Item>.generate(numberOfItems, (int index) {
+    return Item(
+      id: index,
+      headerValue: 'Panel $index',
+      expandedValue: 'This is item number $index',
+    );
+  });
+}
+
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
 
@@ -8,38 +49,40 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final List<Item> _data = generateItems(8);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.red,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Cart',
-            backgroundColor: Colors.green,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Profile',
-            backgroundColor: Colors.purple,
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
+    return SingleChildScrollView(
+      child: Container(
+        child: _buildPanel(),
       ),
+    );
+  }
+
+  Widget _buildPanel() {
+    return ExpansionPanelList.radio(
+      initialOpenPanelValue: 2,
+      children: _data.map<ExpansionPanelRadio>((Item item) {
+        return ExpansionPanelRadio(
+            value: item.id,
+            headerBuilder: (BuildContext context, bool isExpanded) {
+              return ListTile(
+                title: Text(item.headerValue),
+              );
+            },
+            body: ListTile(
+                title: Text(item.expandedValue),
+                subtitle:
+                    const Text('To delete this panel, tap the trash can icon'),
+                trailing: const Icon(Icons.delete),
+                onTap: () {
+                  setState(() {
+                    _data
+                        .removeWhere((Item currentItem) => item == currentItem);
+                  });
+                }));
+      }).toList(),
     );
   }
 }

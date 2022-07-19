@@ -105,6 +105,7 @@ class LoginUser extends VxMutation<MyStore> {
   @override
   perform() async {
     store!.token = token;
+    store!.initOrders();
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     await localStorage.setString('token', token);
   }
@@ -118,6 +119,7 @@ class LogoutUser extends VxMutation<MyStore> {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     await localStorage.remove('token');
     await localStorage.remove('user');
+
 
     store!.user = User(
       id: -1,
