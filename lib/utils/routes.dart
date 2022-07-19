@@ -1,5 +1,5 @@
 class MyRoutes {
-  static String home = "/";
+  static String home = "/home";
   static String login = "/login";
   static String productDetail = "/product";
   static String cart = "/cart";

@@ -7,6 +7,7 @@ import '../store/store.dart';
 import '../utils/routes.dart';
 import '../widgets/bottom_nav.dart';
 import '../widgets/profile_widgets/profile_menu.dart';
+import '../utils/lib.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -22,7 +23,9 @@ class ProfilePage extends StatelessWidget {
           IconButton(
             icon: const Icon(FontAwesomeIcons.arrowRightFromBracket),
             onPressed: () async {
+              await myDio.dio.post('/logout');
               LogoutUser();
+              
               await Navigator.pushNamedAndRemoveUntil(
                   context, MyRoutes.login, (Route<dynamic> route) => false);
             },

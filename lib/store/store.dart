@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:get/get_connect/http/src/utils/utils.dart';
+
 import '../models/Item.dart';
 import '../models/cart.dart';
 import '../models/wishlist.dart';
@@ -34,6 +36,15 @@ class MyStore extends VxStore {
   clearOrder() {
     orders.clear();
   }
+
+setToken(String token) {
+    this.token = token;
+  }
+
+  clearToken() {
+    token = '';
+  }
+
 
   initUser() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
