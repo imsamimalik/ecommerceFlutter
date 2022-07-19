@@ -1,16 +1,15 @@
 import 'dart:convert';
 
-import 'package:ecommerceflutter/models/Item.dart';
-import 'package:ecommerceflutter/models/cart.dart';
-import 'package:ecommerceflutter/models/wishlist.dart';
+import '../models/Item.dart';
+import '../models/cart.dart';
+import '../models/wishlist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../models/User.dart';
-import '../models/order_item.dart';
 import '../models/orders.dart';
 import '../models/wishlist_item.dart';
-import '../utils/constants.dart';
+import '../utils/lib.dart';
 
 class MyStore extends VxStore {
   late ProductsModel products;
@@ -18,7 +17,7 @@ class MyStore extends VxStore {
   late String token;
   late User user;
   late WishlistModel wishlist;
-  late Orders orders;
+  late List<Orders> orders;
 
   MyStore() {
     products = ProductsModel();
@@ -27,6 +26,11 @@ class MyStore extends VxStore {
     wishlist = WishlistModel([]);
     initUser();
   }
+  
+  clearCart() {
+    cart.clearCart();
+  }
+
   initUser() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     var value = localStorage.getString('token');
@@ -45,31 +49,31 @@ class MyStore extends VxStore {
     } else {
       user = User.fromMap(json.decode(userSaved));
     }
-    print(user);
+    // print(user);
+    if (token != '') {
 
     initWishlist();
-  //  initOrders();
+      initOrders();
+    }
   }
 
   initWishlist() async {
-    final response = await CONSTANTS.DIO.post('/wishlist');
+    final response = await myDio.dio.post('/wishlist');
 
-    wishlist = WishlistModel(List.from(response.data)
-        .map<WishlistItem>((item) => WishlistItem.fromMap(item))
+    wishlist = WishlistModel(
+      List.from(response.data)
+          .map<WishlistItem>((item) => WishlistItem.fromMap(item))
           .toList(),
     );
   }
 
   initOrders() async {
-    final response = await CONSTANTS.DIO.get('/orders');
-    print(response.data.runtimeType);
-    orders = Orders(
-      List.from(response.data)
-          .map<OrderItem>((item) => OrderItem.fromMap(item))
-          .toList(),
-    );
-    
-
-    // print(orders);
+    final response = await myDio.dio.get('/orders');
+    orders = <Orders>[];
+    response.data.forEach((v) {
+      orders.add(Orders.fromAPI(v));
+    });
   }
+
+ 
 }

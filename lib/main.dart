@@ -1,17 +1,18 @@
-import 'package:ecommerceflutter/models/User.dart';
-import 'package:ecommerceflutter/pages/cart.dart';
-import 'package:ecommerceflutter/pages/home.dart';
-import 'package:ecommerceflutter/pages/login.dart';
-import 'package:ecommerceflutter/pages/profile.dart';
-import 'package:ecommerceflutter/pages/register.dart';
-import 'package:ecommerceflutter/store/store.dart';
-import 'package:ecommerceflutter/utils/routes.dart';
-import 'package:ecommerceflutter/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'models/User.dart';
+import 'pages/cart.dart';
+import 'pages/home.dart';
+import 'pages/login.dart';
+import 'pages/profile.dart';
+import 'pages/register.dart';
+import 'pages/success.dart';
 import 'pages/wishlist.dart';
+import 'store/store.dart';
+import 'utils/routes.dart';
+import 'utils/theme.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 
@@ -40,9 +41,9 @@ class _MainAppState extends State<MainApp> {
         themeMode: ThemeMode.light,
         theme: MyTheme.lightTheme,
         darkTheme: MyTheme.darkTheme,
-        initialRoute: token != '' ? MyRoutes.home : MyRoutes.login,
         navigatorKey: navigatorKey,
         scaffoldMessengerKey: scaffoldKey,
+        initialRoute: token != '' ? MyRoutes.home : MyRoutes.login,
         routes: {
           MyRoutes.home: (context) => const HomePage(),
           MyRoutes.login: (context) => const LoginPage(),
@@ -50,6 +51,7 @@ class _MainAppState extends State<MainApp> {
           MyRoutes.profile: (context) => const ProfilePage(),
           MyRoutes.register: (context) => const RegisterPage(),
           MyRoutes.wishlist: (context) => const WishlistPage(),
+          MyRoutes.success: (context) => const SuccessPage(),
         });
   }
 }

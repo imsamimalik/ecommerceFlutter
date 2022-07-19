@@ -1,12 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../store/store.dart';
-import '../utils/constants.dart';
+import '../utils/lib.dart';
 import 'wishlist_item.dart';
 
 class WishlistModel {
@@ -75,7 +73,7 @@ class AddWishlist extends VxMutation<MyStore> {
   perform() async {
     store?.wishlist.add(id);
     final response =
-        await CONSTANTS.DIO.post('/wishlist/add', data: {'productId': id});
+        await myDio.dio.post('/wishlist/add', data: {'productId': id});
 
     if (response.statusCode == 201) {
       if (kDebugMode) {
@@ -93,7 +91,7 @@ class RemoveWishlist extends VxMutation<MyStore> {
   perform() async {
     store?.wishlist.remove(id);
 
-    final response = await CONSTANTS.DIO.delete('/wishlist/$id');
+    final response = await myDio.dio.delete('/wishlist/$id');
 
     if (response.statusCode == 200) {
       if (kDebugMode) {

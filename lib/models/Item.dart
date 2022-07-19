@@ -1,12 +1,11 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'package:ecommerceflutter/store/store.dart';
-
+import '../main.dart' show navigatorKey;
+import '../store/store.dart';
 import '../utils/constants.dart';
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import '../utils/lib.dart';
 
 class ProductsModel {
   static var products = [];
@@ -116,18 +115,19 @@ class Item {
 
 class AddProduct extends VxMutation<MyStore> {
   final formData;
-  final context;
+  final formKey;
 
-  AddProduct({required this.formData, required this.context});
+  AddProduct({required this.formData, required this.formKey});
   @override
   perform() async {
     try {
-      var response = await CONSTANTS.DIO.post(
+      var response = await myDio.dio.post(
         '/products',
         data: formData,
       );
       if (response.statusCode == 201) {
-        Navigator.pop(context, 'Product added successfully');
+        navigatorKey.currentState!.pop('Product added successfully');
+        formKey.currentState.reset();
         FetchProducts();
       }
     } catch (e) {
@@ -140,7 +140,7 @@ class FetchProducts extends VxMutation<MyStore> {
   @override
   perform() async {
     final response =
-        await CONSTANTS.DIO.get('${CONSTANTS.API_BASE_URL}/products');
+        await myDio.dio.get('${constants.API_BASE_URL}/products');
 
     ProductsModel.products = List.from(response.data)
         .map<Item>((item) => Item.fromMap(item))

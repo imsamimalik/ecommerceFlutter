@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
-import 'package:ecommerceflutter/widgets/bottom_nav.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -8,6 +5,8 @@ import 'package:velocity_x/velocity_x.dart';
 import '../models/Item.dart';
 import '../store/store.dart';
 import '../utils/constants.dart';
+import '../utils/lib.dart';
+import '../widgets/bottom_nav.dart';
 import '../widgets/home_widgets/fab.dart';
 import '../widgets/home_widgets/product_header.dart';
 import '../widgets/home_widgets/product_list.dart';
@@ -33,7 +32,7 @@ class _HomePageState extends State<HomePage> {
 
   loadData() async {
     final response =
-        await CONSTANTS.DIO.get('${CONSTANTS.API_BASE_URL}/products');
+        await myDio.dio.get('${constants.API_BASE_URL}/products');
     isLoading = false;
     ProductsModel.products = List.from(response.data)
         .map<Item>((item) => Item.fromMap(item))

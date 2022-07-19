@@ -1,4 +1,4 @@
-import 'package:ecommerceflutter/models/cart.dart';
+import '../../models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -31,7 +31,7 @@ class CartList extends StatelessWidget {
                   },
                   child: ListTile(
                     leading: Image.network(
-                        '${CONSTANTS.imgURL}${item.imgUrl}',
+                        '${constants.imgURL}${item.imgUrl}',
                         fit: BoxFit.contain),
                     trailing: IconButton(
                         onPressed: () {

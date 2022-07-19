@@ -1,9 +1,9 @@
-import 'package:ecommerceflutter/utils/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerceflutter/models/Item.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../models/Item.dart';
 import '../utils/constants.dart';
+import '../utils/theme.dart';
 import '../widgets/product_widgets/bottom_bar.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -31,7 +31,7 @@ class ProductDetail extends StatelessWidget {
           children: [
             Hero(
               tag: Key(product.id.toString()),
-              child: Image.network('${CONSTANTS.imgURL}${product.imgUrl}'),
+              child: Image.network('${constants.imgURL}${product.imgUrl}'),
             ).h32(context),
             Expanded(
                 child: VxArc(

@@ -1,5 +1,5 @@
-import 'package:ecommerceflutter/models/Item.dart';
-import 'package:ecommerceflutter/models/cart.dart';
+import '../../models/Item.dart';
+import '../../models/cart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';

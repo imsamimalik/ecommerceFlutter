@@ -1,8 +1,9 @@
-import 'package:ecommerceflutter/models/Item.dart';
+import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:dio/dio.dart';
+
+import '../../models/Item.dart';
 
 class FAB extends StatefulWidget {
   const FAB({Key? key}) : super(key: key);
@@ -42,7 +43,7 @@ class _FABState extends State<FAB> {
         'category': catName,
         'imgUrl': await MultipartFile.fromFile(filePath, filename: file.name),
       });
-      AddProduct(formData: formData, context: context);
+      AddProduct(formData: formData, formKey: _formkey);
     }
   }
 
@@ -54,9 +55,7 @@ class _FABState extends State<FAB> {
       'Clothes',
       'Furniture',
     ];
-    // print(cats.toList());
-    // return VxBuilder(
-    //   builder: (context, store, status) {
+
     return FloatingActionButton(
         onPressed: () {
           showDialog(
@@ -154,7 +153,7 @@ class _FABState extends State<FAB> {
                           .theme.floatingActionButtonTheme.backgroundColor),
                       shape: MaterialStateProperty.all(const StadiumBorder()),
                     ),
-                    child: 'Choose Image'.text.make(),
+                    child: 'Choose Image'.text.white.make(),
                   ).wh(150, 40)
                 ]),
               ).p20(),
@@ -172,9 +171,7 @@ class _FABState extends State<FAB> {
           );
         },
         child: const Icon(Icons.add)
-        // child: const Icon(CupertinoIcons.cart, color: Colors.white),
         );
 
-    //.badge(color: Vx.red500, count: cart.items.length, size: 20);
   }
 }

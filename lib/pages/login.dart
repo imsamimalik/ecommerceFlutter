@@ -4,7 +4,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../models/User.dart';
 import '../store/store.dart';
-import '../utils/constants.dart';
+import '../utils/lib.dart';
 import '../utils/routes.dart';
 
 class LoginPage extends StatefulWidget {
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
       });
 
       try {
-        var response = await CONSTANTS.DIO.post(
+        var response = await myDio.dio.post(
           '/login',
           data: formData,
         );

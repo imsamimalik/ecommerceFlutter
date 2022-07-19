@@ -1,5 +1,5 @@
-import 'package:ecommerceflutter/models/Item.dart';
-import 'package:ecommerceflutter/store/store.dart';
+import 'Item.dart';
+import '../store/store.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CartModel {
@@ -18,6 +18,10 @@ class CartModel {
 
   num get totalPrice =>
       items.fold(0, (total, current) => total + current.price);
+
+  clearCart() {
+    _productIds.clear();
+  }
 }
 
 class AddCart extends VxMutation<MyStore> {

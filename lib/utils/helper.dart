@@ -1,8 +1,8 @@
-import 'package:ecommerceflutter/utils/routes.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart' show navigatorKey, scaffoldKey;
 import '../models/User.dart' show LogoutUser;
+import 'routes.dart';
 
 class Helper {
   static isTokenValid(status) async {
@@ -15,7 +15,7 @@ class Helper {
             elevation: 0,
             backgroundColor: Colors.teal),
       );
-      navigatorKey.currentState!.pushNamedAndRemoveUntil(
+      await navigatorKey.currentState!.pushNamedAndRemoveUntil(
           MyRoutes.login, (Route<dynamic> route) => false);
       return false;
     } else {

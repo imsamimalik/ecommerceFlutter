@@ -1,5 +1,5 @@
-import 'package:ecommerceflutter/pages/product_detail.dart';
-import 'package:ecommerceflutter/widgets/home_widgets/product_item.dart';
+import '../../pages/product_detail.dart';
+import 'product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 

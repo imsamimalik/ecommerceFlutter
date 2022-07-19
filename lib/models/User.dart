@@ -106,7 +106,7 @@ class LoginUser extends VxMutation<MyStore> {
   perform() async {
     store!.token = token;
     SharedPreferences localStorage = await SharedPreferences.getInstance();
-    localStorage.setString('token', token);
+    await localStorage.setString('token', token);
   }
 }
 

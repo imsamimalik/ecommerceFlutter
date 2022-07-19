@@ -1,13 +1,14 @@
-import 'package:ecommerceflutter/models/Item.dart';
-import 'package:ecommerceflutter/models/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../models/Item.dart';
+import '../../models/wishlist.dart';
 import '../../models/wishlist_item.dart';
 import '../../pages/product_detail.dart';
 import '../../store/store.dart';
 import '../../utils/constants.dart';
+import '../../utils/lib.dart';
 
 class WishlistList extends StatefulWidget {
   const WishlistList({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _WishlistListState extends State<WishlistList> {
   }
 
   loadWishlistList() async {
-    final response = await CONSTANTS.DIO.post('/wishlist');
+    final response = await myDio.dio.post('/wishlist');
     wishlist = WishlistModel(List.from(response.data)
         .map<WishlistItem>((item) => WishlistItem.fromMap(item))
         .toList());
@@ -55,7 +56,7 @@ class _WishlistListState extends State<WishlistList> {
                                 ProductDetail(product: item)));
                   },
                   child: ListTile(
-                    leading: Image.network('${CONSTANTS.imgURL}${item.imgUrl}',
+                    leading: Image.network('${constants.imgURL}${item.imgUrl}',
                         fit: BoxFit.contain),
                     trailing: IconButton(
                         onPressed: () {

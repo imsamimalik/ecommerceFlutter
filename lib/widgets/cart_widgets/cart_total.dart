@@ -1,7 +1,8 @@
-import 'package:ecommerceflutter/models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../models/cart.dart';
+import '../../models/orders.dart';
 import '../../store/store.dart';
 
 class CartTotal extends StatelessWidget {
@@ -10,6 +11,19 @@ class CartTotal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = (VxState.store as MyStore).cart;
+
+
+addOrder() {
+      if (cart.items.isNotEmpty) {
+        List<num> pid;
+        pid = <num>[];
+        for (var v in cart.items) {
+          pid.add(v.id);
+        }
+        AddOrder(pid);
+      }
+    }
+
 
     return SizedBox(
       height: 90,
@@ -28,7 +42,7 @@ class CartTotal extends StatelessWidget {
           ),
           30.widthBox,
           ElevatedButton(
-            onPressed: () {},
+            onPressed: cart.items.isEmpty ? null : addOrder,
             style: ElevatedButton.styleFrom(
               primary: context.theme.floatingActionButtonTheme.backgroundColor,
               shape: const StadiumBorder(),

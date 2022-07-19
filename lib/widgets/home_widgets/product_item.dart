@@ -1,9 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:ecommerceflutter/widgets/home_widgets/add_to_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'package:ecommerceflutter/widgets/home_widgets/product_image.dart';
+import '../home_widgets/add_to_cart.dart';
+import '../home_widgets/product_image.dart';
 
 import '../../models/Item.dart';
 

@@ -1,55 +1,52 @@
-import 'dart:convert';
+import 'package:velocity_x/velocity_x.dart';
 
-import 'package:flutter/foundation.dart';
-
-import 'package:ecommerceflutter/models/order_item.dart';
-
+import '../main.dart' show navigatorKey;
+import '../store/store.dart';
+import '../utils/lib.dart';
+import '../utils/routes.dart';
 class Orders {
-  final List<OrderItem> orders;
+  late num id;
+  late num uid;
+  late List<num> pid;
 
-  Orders(
-    this.orders,
-  );
+  Orders({
+    required this.id,
+    required this.uid,
+    required this.pid,
+  });
 
-  Orders copyWith({
-    List<OrderItem>? orders,
-  }) {
-    return Orders(
-      orders ?? this.orders,
-    );
+  Orders.fromAPI(Map<String, dynamic> json) {
+    id = num.parse(json["id"].toString());
+    uid = num.parse(json["uid"].toString());
+    pid = <num>[];
+    (json["pid"]).forEach((v) {
+      pid.add(v);
+    });
   }
+}
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'orders': orders.map((x) => x.toMap()).toList(),
-    };
-  }
+class AddOrder extends VxMutation<MyStore> {
+  final List<num> pid;
 
-  factory Orders.fromMap(Map<String, dynamic> map) {
-    return Orders(
-      List<OrderItem>.from(
-        (map['orders'] as List<int>).map<OrderItem>(
-          (x) => OrderItem.fromMap(x as Map<String, dynamic>),
-        ),
-      ),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Orders.fromJson(String source) =>
-      Orders.fromMap(json.decode(source) as Map<String, dynamic>);
+  AddOrder(this.pid);
 
   @override
-  String toString() => 'Orders(orders: $orders)';
-
-  @override
-  bool operator ==(covariant Orders other) {
-    if (identical(this, other)) return true;
-
-    return listEquals(other.orders, orders);
+  perform() async {
+    try {
+      final response = await myDio.dio.post('/orders', data: {
+        "pid": pid,
+      });
+      if (response.statusCode == 201) {
+        store!.clearCart();
+        navigatorKey.currentState!.pushNamed(MyRoutes.success, arguments: {
+          'orderNo': response.data['order']['id'],
+        });
+      }
+    } catch (e) {
+      print(e);
+    }
+      
+    
+   
   }
-
-  @override
-  int get hashCode => orders.hashCode;
 }

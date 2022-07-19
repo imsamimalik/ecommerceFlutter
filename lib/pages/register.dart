@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../store/store.dart';
-import '../utils/constants.dart';
+import '../utils/lib.dart';
 import '../utils/routes.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -47,11 +47,11 @@ class _RegisterPageState extends State<RegisterPage> {
         'address': addressController.text,
         'username': usernameController.text,
         'walletBalance': 100000,
-        'password_confirmation': passwordController.text
+        'password_confirmation': passConfirmController.text
       });
 
       try {
-        var response = await CONSTANTS.DIO.post(
+        var response = await myDio.dio.post(
           '/register',
           data: formData,
         );
@@ -87,6 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   children: [
                     VxTextField(
+                      controller: emailConroller,
                       fillColor: Colors.transparent,
                       hint: 'Enter your email',
                       labelText: 'Email',
@@ -138,7 +139,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       },
                     ),
                     VxTextField(
-                      controller: passwordController,
+                      controller: passConfirmController,
                       obscureText: true,
                       isPassword: true,
                       fillColor: Colors.transparent,

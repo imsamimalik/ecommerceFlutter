@@ -11,7 +11,7 @@ class ProductImage extends StatelessWidget {
   final String image;
   @override
   Widget build(BuildContext context) {
-    return Image.network('${CONSTANTS.imgURL}$image')
+    return Image.network('${constants.imgURL}$image')
         .box
         .rounded
         .p4
