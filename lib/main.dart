@@ -1,7 +1,6 @@
 import 'package:ecommerceflutter/pages/home.dart';
 import 'package:ecommerceflutter/pages/orders.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'models/User.dart';
@@ -36,7 +35,7 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     VxState.watch(context, on: [LoginUser, LogoutUser]);
-    return GetMaterialApp(
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
         theme: MyTheme.lightTheme,

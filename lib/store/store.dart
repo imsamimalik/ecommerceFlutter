@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:get/get_connect/http/src/utils/utils.dart';
-
 import '../models/Item.dart';
 import '../models/cart.dart';
 import '../models/wishlist.dart';

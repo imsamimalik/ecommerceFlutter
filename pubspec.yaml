@@ -35,12 +35,10 @@ dependencies:
     cupertino_icons: ^1.0.2
     velocity_x: ^3.5.1
     google_fonts: ^3.0.1
-    http: ^0.13.4
     file_picker: ^4.6.1
     dio: ^4.0.6
     shared_preferences: ^2.0.15
     font_awesome_flutter: ^10.1.0
-    get: ^4.6.5
 
 
 dev_dependencies:
