@@ -1,6 +1,30 @@
 # ecommerceflutter
 
-A Flutter project.
+A Flutter project
+ <br>
+ <br>
+ ### Note
+ This project uses REST API from this repository: [ecommerce-laravel-api](https://github.com/imsamimalik/ecommerce-laravel-api)
+ 
+ 
+## Features
+
+ - Real time changes
+ - Auth Protected routes
+ - Local Storage Functionality
+ - Login User
+ - Register User
+ - Shop 
+ - Cart (Add, remove proudct)
+ - Wishlist (Add, remove proudct)
+ - Profile
+ - Place Order
+ - View your Orders
+ 
+ <br>
+ <br>
+ 
+ ## Screenshots
 
 <table class="wp-table">
     <tr>
