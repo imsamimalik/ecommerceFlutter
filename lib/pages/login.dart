@@ -16,7 +16,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var token = (VxState.store as MyStore).token;
-  // var user = (VxState.store as MyStore).user;
   final _formkey = GlobalKey<FormState>();
 
   final emailConroller = TextEditingController();
@@ -33,8 +32,6 @@ class _LoginPageState extends State<LoginPage> {
 
 
   moveToHome(BuildContext context) async {
-    emailConroller.text = 'imsamimalikk@gmail.com';
-    passwordController.text = 'imsamimalik';
     if (_formkey.currentState!.validate()) {
       var formData = FormData.fromMap({
         'email': emailConroller.text,

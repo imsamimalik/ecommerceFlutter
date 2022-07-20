@@ -1,8 +1,8 @@
+import 'package:ecommerceflutter/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../utils/theme.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: MyTheme.accentColor,
+        color: constants.accentColor,
         child: ListView(children: [
           DrawerHeader(
             padding: const EdgeInsets.all(0),

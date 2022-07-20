@@ -34,9 +34,9 @@ class CartList extends StatelessWidget {
                         '${constants.imgURL}${item.imgUrl}',
                         fit: BoxFit.contain),
                     trailing: IconButton(
-                        onPressed: () {
-                          RemoveCart(item);
-                        },
+                      onPressed: () {
+                        RemoveCart(item);
+                      },
                       icon: const Icon(FontAwesomeIcons.trashCan, size: 20),
                     ),
                     title: item.productName.text.make(),

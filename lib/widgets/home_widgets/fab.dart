@@ -92,7 +92,7 @@ class _FABState extends State<FAB> {
                   ),
                   TextFormField(
                     controller: priceController,
-                    // keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                         hintText: 'Enter product price',
                         labelText: 'Product price'),
@@ -105,7 +105,7 @@ class _FABState extends State<FAB> {
                   ),
                   TextFormField(
                     controller: inStockController,
-                    // keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                         hintText: 'Enter product quantity in Stock',
                         labelText: 'Product Quantity'),

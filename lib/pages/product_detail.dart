@@ -3,7 +3,6 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../models/Item.dart';
 import '../utils/constants.dart';
-import '../utils/theme.dart';
 import '../widgets/product_widgets/bottom_bar.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -41,20 +40,24 @@ class ProductDetail extends StatelessWidget {
               child: Container(
                 width: context.screenWidth,
                 color: context.cardColor,
-                child: Column(
-                  children: [
-                    product.productName.text.bold.xl4
-                        .color(MyTheme.darkBluishColor)
-                        .make(),
-                    product.desc.text.xl.textStyle(context.captionStyle).make(),
-                    '(${product.category})'.text.make(),
-                    10.heightBox,
-                    "Sit lorem invidunt aliquyam sanctus magna, aliquyam sit at nonumy ipsum, diam sadipscing aliquyam lorem amet. Vero justo dolor justo kasd amet, lorem lorem amet erat justo elitr vero rebum dolores voluptua. Sit aliquyam kasd gubergren voluptua accusam, eirmod dolores sit at amet eos, sit duo nonumy clita no, lorem."
-                        .text
-                        .make()
-                        .p16()
-                  ],
-                ).py64(),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      product.productName.text.bold.xl4
+                          .color(constants.darkBluishColor)
+                          .make(),
+                      product.desc.text.xl
+                          .textStyle(context.captionStyle)
+                          .make(),
+                      '(${product.category})'.text.make(),
+                      10.heightBox,
+                      "Sit lorem invidunt aliquyam sanctus magna, aliquyam sit at nonumy ipsum, diam sadipscing aliquyam lorem amet. Vero justo dolor justo kasd amet, lorem lorem amet erat justo elitr vero rebum dolores voluptua. Sit aliquyam kasd gubergren voluptua accusam, eirmod dolores sit at amet eos, sit duo nonumy clita no, lorem."
+                          .text
+                          .make()
+                          .p16()
+                    ],
+                  ).py64(),
+                ),
               ),
             ))
           ],

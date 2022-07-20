@@ -87,6 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   children: [
                     VxTextField(
+                      autofocus: true,
                       controller: emailConroller,
                       fillColor: Colors.transparent,
                       hint: 'Enter your email',
