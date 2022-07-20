@@ -14,7 +14,7 @@ class OrdersPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: 'Orders'.text.make(),
+        title: 'Orders'.text.makeCentered(),
       ),
       body: SingleChildScrollView(
           child: Column(
